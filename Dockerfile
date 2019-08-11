@@ -1,4 +1,4 @@
-FROM debian:10
+FROM ubuntu:18.04
 
 RUN apt-get update && apt-get install -y g++ cython \
       libxml2-dev libxslt-dev \
@@ -11,4 +11,5 @@ RUN echo "index-url = https://pypi.tuna.tsinghua.edu.cn/simple" >> ~/.pip/pip.co
 ADD requirement.txt .
 RUN pip3 install -r requirement.txt
 
+expose 8888
 CMD ["jupyter", "notebook"]
