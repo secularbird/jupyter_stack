@@ -1,15 +1,14 @@
-FROM python:3.7-alpine
+FROM debian:10
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
-
-RUN apk add g++ cython linux-headers openblas gfortran \
-      libxml2-dev libxslt-dev lapack-dev \
-      freetype-dev
+RUN apt-get update && apt-get install -y g++ cython \
+      libxml2-dev libxslt-dev \
+      python3 python3-pip
 
 RUN mkdir ~/.pip
 RUN echo " [global]" > ~/.pip/pip.conf
 RUN echo "index-url = https://pypi.tuna.tsinghua.edu.cn/simple" >> ~/.pip/pip.conf
 
-RUN pip install jupyter numpy matplotlib keras
+ADD requirement.txt .
+RUN pip3 install -r requirement.txt
 
 CMD ["jupyter", "notebook"]
