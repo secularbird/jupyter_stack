@@ -10,6 +10,9 @@ RUN echo "index-url = https://pypi.tuna.tsinghua.edu.cn/simple" >> ~/.pip/pip.co
 
 ADD requirement.txt .
 RUN pip3 install -r requirement.txt
+# enable extensions
+RUN jupyter contrib nbextension install --user
+RUN jupyter nbextensions_configurator enable --user
 
 expose 8888
 CMD ["jupyter", "notebook"]
