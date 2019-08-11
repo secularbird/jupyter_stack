@@ -3,3 +3,5 @@ keras
 matplotlib
 jupyter
 jedi
+jupyter_nbextensions_configurator
+jupyter_contrib_nbextensions
