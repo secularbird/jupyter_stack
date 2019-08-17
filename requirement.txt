@@ -4,6 +4,8 @@ matplotlib
 jupyter
 jedi
 pandas
+opencv-python
+opencv-contrib-python
 networkx
 jupyter_nbextensions_configurator
 jupyter_contrib_nbextensions
